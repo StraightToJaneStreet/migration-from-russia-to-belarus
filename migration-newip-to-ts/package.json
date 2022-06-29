@@ -5,8 +5,8 @@
     "scripts": {
         "start": "webpack serve --open --env mode=dev",
         "build": "webpack --env mode=prod",
-        "lint": "eslint . -c .eslintrc.json",
-        "lint-fix": "eslint . -c .eslintrc.json --fix"
+        "lint": "eslint .",
+        "lint-fix": "eslint . --fix"
     },
     "repository": {
         "type": "git",
