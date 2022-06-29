@@ -15,7 +15,6 @@ class Loader {
 
   errorHandler(res) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
 
@@ -38,7 +37,7 @@ class Loader {
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .catch((err) => { throw Error(err); });
   }
 }
 
