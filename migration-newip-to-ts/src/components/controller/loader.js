@@ -7,7 +7,7 @@ class Loader {
   getResp(
     { endpoint, options = {} },
     callback = () => {
-      console.error('No callback for GET response');
+      throw Error('No callback for GET response');
     },
   ) {
     this.load('GET', endpoint, callback, options);
