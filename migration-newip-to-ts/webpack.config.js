@@ -21,6 +21,9 @@ const baseConfig = {
   },
   resolve: {
     extensions: ['.js', '.ts'],
+    alias: {
+      Core: path.resolve(__dirname, 'src', 'core')
+    }
   },
   output: {
     filename: 'index.js',
