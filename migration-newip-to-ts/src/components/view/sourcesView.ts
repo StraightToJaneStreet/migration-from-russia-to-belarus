@@ -1,24 +1,26 @@
-import './sources.css';
-import Source from 'Core/source';
+import './css/sourcesView.css';
+import Source from '../core/source';
+import SourceView from './sourceView';
 
 class Sources {
-  draw(data: Source[]) {
+  container: HTMLElement;
+
+  constructor(root: HTMLElement) {
+    this.container = document.createElement('div');
+    this.container.classList.add('sources', 'buttons');
+    root.append(this.container);
+  }
+
+  draw(sources: Source[]) {
     const fragment = document.createDocumentFragment();
-    const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
-    if (sourceItemTemp === null) {
-      throw Error('source template does not exists');
-    }
 
-    data.forEach((item) => {
-      const sourceClone = sourceItemTemp.content.cloneNode(true) as Element;
-
-      sourceClone.querySelector('.source__item-name').textContent = item.name;
-      sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
-
-      fragment.append(sourceClone);
+    sources.forEach((source) => {
+      const sourceElement = SourceView(source);
+      fragment.append(sourceElement);
     });
 
-    document.querySelector('.sources').append(fragment);
+    this.container.innerHTML = '';
+    this.container.append(fragment);
   }
 }
 
