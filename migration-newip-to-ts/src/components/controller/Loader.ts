@@ -6,32 +6,28 @@ function errorHandler(res: Response) {
   return res;
 }
 
+type URLOptions = { [key: string]: string };
+
 interface LoaderOptions {
+  baseLink: string,
   apiKey: string
 };
 
-class Loader {
+class Loader<TResponseContent> {
   baseLink: any;
-  options: any;
   apiKey: string;
 
-  constructor(baseLink: string, options: LoaderOptions) {
-    this.apiKey = options.apiKey;
+  constructor({ baseLink, apiKey }: LoaderOptions) {
+    this.apiKey = apiKey;
     this.baseLink = baseLink;
-    this.options = options;
   }
 
-  getResp(
-    { endpoint, options = {} },
-    callback = () => {
-      throw Error('No callback for GET response');
-    },
-  ) {
-    this.load('GET', endpoint, callback, options);
+  getResp(endpoint: string, options: URLOptions = {}) {
+    return this.load('GET', endpoint, options);
   }
 
-  makeUrl(options, endpoint) {
-    const urlOptions = { ...this.options, ...options };
+  makeUrl(endpoint: string, options: URLOptions) {
+    const urlOptions: URLOptions = { apiKey: this.apiKey, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
@@ -41,11 +37,11 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback, options = {}) {
-    fetch(this.makeUrl(options, endpoint), { method })
+  load(method: string, endpoint: string, options = {}): Promise<TResponseContent> {
+    const targetUrl = this.makeUrl(endpoint, options);
+    return fetch(targetUrl, { method })
       .then(errorHandler)
       .then((res) => res.json())
-      .then((data) => callback(data))
       .catch((err) => { throw Error(err); });
   }
 }
