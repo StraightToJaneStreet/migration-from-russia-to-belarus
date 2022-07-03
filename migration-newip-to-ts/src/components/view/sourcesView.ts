@@ -1,9 +1,13 @@
 import './sources.css';
+import Source from 'Core/source';
 
 class Sources {
-  draw(data) {
+  draw(data: Source[]) {
     const fragment = document.createDocumentFragment();
-    const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp');
+    const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
+    if (sourceItemTemp === null) {
+      throw Error('source template does not exists');
+    }
 
     data.forEach((item) => {
       const sourceClone = sourceItemTemp.content.cloneNode(true) as Element;
