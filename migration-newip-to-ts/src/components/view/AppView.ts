@@ -1,5 +1,5 @@
-import NewsView from './newsView';
-import SourcesView from './sourcesView';
+import NewsView from './NewsView';
+import SourcesView from './SourcesView';
 
 export class AppView {
     news: any;

@@ -1,4 +1,4 @@
-import Source from '../core/source';
+import Source from '../core/Source';
 
 function createElement(tag: string, classes: string[]): HTMLElement {
   const element = document.createElement('tag');

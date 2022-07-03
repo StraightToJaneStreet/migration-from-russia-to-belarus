@@ -1,6 +1,6 @@
 import './css/sourcesView.css';
-import Source from '../core/source';
-import SourceView from './sourceView';
+import Source from '../core/Source';
+import SourceView from './SourceView';
 
 class Sources {
   container: HTMLElement;
