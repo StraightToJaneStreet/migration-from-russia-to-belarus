@@ -8,11 +8,6 @@ function errorHandler(res: Response) {
 
 type URLOptions = { [key: string]: string };
 
-interface LoaderOptions {
-  baseLink: string,
-  apiKey: string
-};
-
 function makeUrl(base: string, endpoint: string, options: URLOptions) {
   const url = `${base}${endpoint}`;
   const createOptionPair = (key: string, value: string) => `${key}=${value}`;
@@ -28,7 +23,7 @@ abstract class Loader<TResponseContent> {
   baseLink: any;
   apiKey: string;
 
-  constructor({ baseLink, apiKey }: LoaderOptions) {
+  constructor(baseLink: string, apiKey: string) {
     this.apiKey = apiKey;
     this.baseLink = baseLink;
   }
