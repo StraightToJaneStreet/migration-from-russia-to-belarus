@@ -11,7 +11,7 @@ class News {
 
     news.forEach((article, idx) => {
       const alternativeView = idx % 2 == 0;
-      const newsItemElement = NewsItemView(article, alternativeView);
+      const newsItemElement = ArticleView(article, alternativeView);
 
       fragment.append(newsItemElement);
     });
