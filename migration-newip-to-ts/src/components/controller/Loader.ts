@@ -34,18 +34,14 @@ abstract class Loader<TResponseContent> {
     this.baseLink = baseLink;
   }
 
-  getResp(endpoint: string, options: URLOptions = {}) {
-    return this.load('GET', endpoint, options);
-  }
-
   makeRelativeUrl(endpoint: string, options: URLOptions) {
     const urlOptions: URLOptions = { apiKey: this.apiKey, ...options };
     return makeUrl(this.baseLink, endpoint, urlOptions);
   }
 
-  load(method: string, endpoint: string, options: URLOptions = {}): Promise<TResponseContent> {
+  load(endpoint: string, options: URLOptions = {}): Promise<TResponseContent> {
     const targetUrl = this.makeRelativeUrl(endpoint, options);
-    return fetch(targetUrl, { method })
+    return fetch(targetUrl, { method: 'GET' })
       .then(errorHandler)
       .then((res) => res.json())
       .catch((err) => { throw Error(err); });
