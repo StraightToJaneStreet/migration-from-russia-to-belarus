@@ -13,7 +13,19 @@ interface LoaderOptions {
   apiKey: string
 };
 
-class Loader<TResponseContent> {
+function makeUrl(base: string, endpoint: string, options: URLOptions) {
+
+  const url = `${base}${endpoint}`;
+  const createOptionPair = (key: string, value: string) => `${key}=${value}`;
+  const optionsKeys = Object.keys(options);
+  const optionsString = optionsKeys
+    .map(key => createOptionPair(key, options[key]))
+    .join('');
+
+  return `${url}?${optionsString}`;
+}
+
+abstract class Loader<TResponseContent> {
   baseLink: any;
   apiKey: string;
 
@@ -26,19 +38,13 @@ class Loader<TResponseContent> {
     return this.load('GET', endpoint, options);
   }
 
-  makeUrl(endpoint: string, options: URLOptions) {
+  makeRelativeUrl(endpoint: string, options: URLOptions) {
     const urlOptions: URLOptions = { apiKey: this.apiKey, ...options };
-    let url = `${this.baseLink}${endpoint}?`;
-
-    Object.keys(urlOptions).forEach((key) => {
-      url += `${key}=${urlOptions[key]}&`;
-    });
-
-    return url.slice(0, -1);
+    return makeUrl(this.baseLink, endpoint, urlOptions);
   }
 
   load(method: string, endpoint: string, options = {}): Promise<TResponseContent> {
-    const targetUrl = this.makeUrl(endpoint, options);
+    const targetUrl = this.makeRelativeUrl(endpoint, options);
     return fetch(targetUrl, { method })
       .then(errorHandler)
       .then((res) => res.json())
