@@ -43,7 +43,7 @@ abstract class Loader<TResponseContent> {
     return makeUrl(this.baseLink, endpoint, urlOptions);
   }
 
-  load(method: string, endpoint: string, options = {}): Promise<TResponseContent> {
+  load(method: string, endpoint: string, options: URLOptions = {}): Promise<TResponseContent> {
     const targetUrl = this.makeRelativeUrl(endpoint, options);
     return fetch(targetUrl, { method })
       .then(errorHandler)
