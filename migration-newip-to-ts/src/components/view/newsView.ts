@@ -1,6 +1,6 @@
 import './css/newsView.css';
-import NewsItem from '../core/NewsItem';
-import NewsItemView from './newsItemView';
+import Article from '../core/Article';
+import ArticleView from './ArticleView';
 
 class News {
   draw(news: NewsItem[]) {

@@ -1,4 +1,4 @@
-import NewsItem from '../core/NewsItem';
+import Article from '../core/Article';
 
 function createElement(tag: string, classes: string[]): HTMLElement {
   const element = document.createElement('tag');
@@ -6,7 +6,7 @@ function createElement(tag: string, classes: string[]): HTMLElement {
   return element;
 }
 
-export default function NewsItemView(article: NewsItem, alt: boolean) {
+export default function ArticleView(article: Article, alt: boolean) {
   const newsItem = createElement('div', ['news__item']);
   if (alt) {
     newsItem.classList.add('alt');
