@@ -9,7 +9,7 @@ class News {
 
     const fragment = document.createDocumentFragment();
 
-    news.forEach((article, idx) => {
+    lastNews.forEach((article, idx) => {
       const alternativeView = idx % 2 == 0;
       const newsItemElement = ArticleView(article, alternativeView);
 
