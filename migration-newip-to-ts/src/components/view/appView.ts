@@ -1,12 +1,13 @@
-import News from './news/news';
-import Sources from './sources/sources';
+import NewsView from './newsView';
+import SourcesView from './sourcesView';
 
 export class AppView {
     news: any;
     sources: any;
-    constructor() {
-        this.news = new News();
-        this.sources = new Sources();
+
+    constructor(root: HTMLElement) {
+        this.news = new NewsView(root);
+        this.sources = new SourcesView(root);
     }
 
     drawNews(data) {
