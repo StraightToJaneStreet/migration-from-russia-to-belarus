@@ -6,7 +6,11 @@ class App {
   view: any;
   constructor() {
     this.controller = new AppController();
-    this.view = new AppView();
+    const appRoot = document.getElementById('#app');
+    if (appRoot === null) {
+      throw Error('Cant find root element');
+    }
+    this.view = new AppView(appRoot);
   }
 
   start() {
