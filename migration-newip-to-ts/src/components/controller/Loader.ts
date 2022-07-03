@@ -14,7 +14,6 @@ interface LoaderOptions {
 };
 
 function makeUrl(base: string, endpoint: string, options: URLOptions) {
-
   const url = `${base}${endpoint}`;
   const createOptionPair = (key: string, value: string) => `${key}=${value}`;
   const optionsKeys = Object.keys(options);
