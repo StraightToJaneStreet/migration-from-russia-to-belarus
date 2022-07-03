@@ -5,6 +5,9 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": 1
+  },
   "env": {
     "browser": true,
     "es2020": true
