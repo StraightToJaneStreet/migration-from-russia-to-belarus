@@ -1,4 +1,4 @@
-function errorHandler(res) {
+function errorHandler(res: Response) {
   if (!res.ok) {
     throw Error(res.statusText);
   }
@@ -6,10 +6,17 @@ function errorHandler(res) {
   return res;
 }
 
+interface LoaderOptions {
+  apiKey: string
+};
+
 class Loader {
   baseLink: any;
   options: any;
-  constructor(baseLink, options) {
+  apiKey: string;
+
+  constructor(baseLink: string, options: LoaderOptions) {
+    this.apiKey = options.apiKey;
     this.baseLink = baseLink;
     this.options = options;
   }
@@ -34,7 +41,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method, endpoint, callback, options = {}) {
+  load(method: string, endpoint: string, callback, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(errorHandler)
       .then((res) => res.json())

@@ -1,5 +1,5 @@
-import AppController from '../controller/controller';
-import { AppView } from '../view/appView';
+import AppController from '../controller/Controller';
+import { AppView } from '../view/AppView';
 
 class App {
   controller: any;
@@ -10,9 +10,6 @@ class App {
   }
 
   start() {
-    function (e: Event) {
-
-    }
     const sourcesElement = document.querySelector('.sources');
     if (sourcesElement === null) {
       throw Error('sources element is not exists');
