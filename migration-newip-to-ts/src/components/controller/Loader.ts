@@ -19,7 +19,9 @@ function makeUrl(base: string, endpoint: string, options: URLOptions) {
   return `${url}?${optionsString}`;
 }
 
-abstract class Loader {
+import BackendResponse from '../app/BackendResponse';
+
+abstract class Loader<K, T extends BackendResponse<K>> {
   baseLink: any;
   apiKey: string;
 
@@ -33,13 +35,16 @@ abstract class Loader {
     return makeUrl(this.baseLink, endpoint, urlOptions);
   }
 
-  load(endpoint: string, options: URLOptions = {}): Promise<TResponseContent> {
+  loadResponse(endpoint: string, options: URLOptions = {}): Promise<T> {
     const targetUrl = this.makeRelativeUrl(endpoint, options);
     return fetch(targetUrl, { method: 'GET' })
+      .catch((err) => { throw Error(err); })
       .then(errorHandler)
-      .then((res) => res.json())
-      .catch((err) => { throw Error(err); });
+      .then(this.unwrapResponse)
+
   }
+
+  protected abstract unwrapResponse(response: Response): Promise<T>;
 }
 
 export default Loader;
