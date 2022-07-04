@@ -38,7 +38,18 @@ class App {
 
   start() {
     const sourcesPromise = this.sourcesLoader.loadResponse();
-    sourcesPromise.then(sources => this.view.drawSources(sources));
+    sourcesPromise
+      .then(sources => {
+        if (sources.length == 0) {
+          throw Error('Cannot find any sources');
+        }
+        return sources;
+      })
+      .then(sources => {
+        this.view.drawSources(sources);
+        return this.articlesLoader.loadBySource(sources[0].id);
+      })
+      .then(articles => this.view.drawNews(articles));
   }
 }
 
