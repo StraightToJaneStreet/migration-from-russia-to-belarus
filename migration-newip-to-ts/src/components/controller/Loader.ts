@@ -41,7 +41,6 @@ abstract class Loader<K, T extends BackendResponse<K>> {
       .catch((err) => { throw Error(err); })
       .then(errorHandler)
       .then(this.unwrapResponse)
-
   }
 
   protected abstract unwrapResponse(response: Response): Promise<T>;
