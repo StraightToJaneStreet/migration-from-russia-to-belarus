@@ -27,7 +27,7 @@ class App {
     this.sourcesLoader = new SourcesLoader(apiConfig);
     this.articlesLoader = new ArticlesLoader(apiConfig);
 
-    this.view = new AppView(appRoot, this.updateSource);
+    this.view = new AppView(appRoot, this.updateSource.bind(this));
   }
 
   updateSource(sourceId: string) {
