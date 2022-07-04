@@ -35,7 +35,7 @@ export default function ArticleView(article: Article, alt: boolean) {
   const readMore = createElement('p', ['news__read-more']);
 
   const readMoreLink = document.createElement('a');
-  readMoreLink.href = '#';
+  readMoreLink.textContent = 'Read More';
   readMoreLink.href = article.url;
 
   newsItem.append(metaContainer, description);
