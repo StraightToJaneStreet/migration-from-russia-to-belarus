@@ -1,0 +1,38 @@
+body {
+  color: #fff;
+  background: #17181c;
+  font-family: sans-serif;
+}
+
+header {
+  padding: 10px 30px;
+}
+
+header h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .author {
+  color: white;
+  margin-bottom: 20px;
+}
+
+footer .logo-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+footer .logo {
+  display: block;
+  width: 100%;
+  padding-top: calc(100% / 3);
+  background: center / contain no-repeat url('https://rs.school/images/rs_school_js.svg'), white;
+}
