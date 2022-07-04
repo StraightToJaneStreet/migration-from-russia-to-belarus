@@ -3,20 +3,24 @@ import BackendResponse from '../app/BackendResponse';
 import ApiConfiguration from '../app/ApiConfiguration';
 
 abstract class Loader<K, T extends BackendResponse<K>> {
-  baseUrl: any;
-  apiKey: string;
+  apiConfig: ApiConfiguration
+
+  endpoint: string;
 
   constructor(apiConfig: ApiConfiguration) {
-    this.apiKey = apiConfig.apiKey;
-    this.baseUrl = apiConfig.baseUrl;
+    this.apiConfig = apiConfig
+    this.endpoint = this.getEndpoint();
   }
+
+  protected abstract getEndpoint(): string;
 
   makeRelativeUrl(endpoint: string, options: URLOptions) {
-    const urlOptions: URLOptions = { apiKey: this.apiKey, ...options };
-    return makeUrl(this.baseUrl, endpoint, urlOptions);
+    const urlOptions: URLOptions = { apiKey: this.apiConfig.apiKey, ...options };
+    return makeUrl(this.apiConfig.baseUrl, endpoint, urlOptions);
   }
 
-  loadResponse(endpoint: string, options: URLOptions = {}): Promise<K> {
+  loadResponse(options: URLOptions = {}): Promise<K> {
+    const endpoint = this.endpoint;
     const targetUrl = this.makeRelativeUrl(endpoint, options);
     return fetch(targetUrl, { method: 'GET' })
       .catch((err) => { throw Error(err); })
