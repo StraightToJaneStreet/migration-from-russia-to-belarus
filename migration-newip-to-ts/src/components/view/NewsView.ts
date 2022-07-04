@@ -1,4 +1,4 @@
-import './css/newsView.css';
+import './css/news.css';
 import Article from '../core/Article';
 import ArticleView from './ArticleView';
 

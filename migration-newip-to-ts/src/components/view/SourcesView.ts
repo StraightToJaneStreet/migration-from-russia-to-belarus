@@ -1,4 +1,4 @@
-import './css/sourcesView.css';
+import './css/sources.css';
 import Source from '../core/Source';
 import SourceView from './SourceView';
 
