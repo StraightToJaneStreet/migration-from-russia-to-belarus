@@ -19,8 +19,8 @@ class App {
       baseUrl: 'https://newsapi.org/v2/',
       apiKey: '23eda7a9a1ba47178e932adfe3cfdb26',
       endpoints: {
-        sources: '/v2/top-headlines/sources',
-        articles: '/v2/top-headlines'
+        sources: '/top-headlines/sources',
+        articles: '/top-headlines'
       }
     }
 
