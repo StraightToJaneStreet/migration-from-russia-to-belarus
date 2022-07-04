@@ -19,7 +19,7 @@ function makeUrl(base: string, endpoint: string, options: URLOptions) {
   return `${url}?${optionsString}`;
 }
 
-abstract class Loader<TResponseContent> {
+abstract class Loader {
   baseLink: any;
   apiKey: string;
 
