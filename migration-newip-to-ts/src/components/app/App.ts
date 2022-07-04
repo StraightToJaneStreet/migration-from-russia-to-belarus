@@ -34,7 +34,9 @@ class App {
   }
 
   updateSource(sourceId: string) {
-
+    this.articlesLoader
+      .loadBySource(sourceId)
+      .then((articles) => this.view.drawNews(articles));
   }
 
   start() {
