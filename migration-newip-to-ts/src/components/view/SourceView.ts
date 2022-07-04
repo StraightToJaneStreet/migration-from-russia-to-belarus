@@ -1,10 +1,5 @@
 import Source from '../core/Source';
-
-function createElement(tag: string, classes: string[]): HTMLElement {
-  const element = document.createElement('tag');
-  element.classList.add(...classes);
-  return element;
-}
+import { createElement } from '../utils/utils';
 
 export default function SourceView(source: Source) {
   const item = createElement('div', ['source__item']);

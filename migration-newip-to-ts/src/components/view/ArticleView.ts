@@ -1,10 +1,5 @@
 import Article from '../core/Article';
-
-function createElement(tag: string, classes: string[]): HTMLElement {
-  const element = document.createElement('tag');
-  element.classList.add(...classes);
-  return element;
-}
+import { createElement } from '../utils/utils';
 
 export default function ArticleView(article: Article, alt: boolean) {
   const newsItem = createElement('div', ['news__item']);
