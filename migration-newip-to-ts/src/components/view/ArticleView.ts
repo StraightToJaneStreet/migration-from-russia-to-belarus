@@ -10,7 +10,6 @@ export default function ArticleView(article: Article, alt: boolean) {
   const metaContainer = createElement('div', ['news__meta']);
 
   const metaPhoto = createElement('div', ['news__meta-photo']);
-  metaPhoto.style.backgroundImage = article.urlToImage || 'img/news_placeholder.jpg';
 
   const metaDetails = createElement('ul', ['news__meta-details']);
   const metaAuthor = createElement('li', ['news__meta-author']);
@@ -44,6 +43,8 @@ export default function ArticleView(article: Article, alt: boolean) {
   metaDetails.append(metaAuthor, metaDate);
   description.append(title, source, content, readMore);
   readMore.append(readMoreLink);
+
+  metaPhoto.style.backgroundImage = `url(${article.urlToImage || 'img/news_placeholder.jpg'}`;
 
   return newsItem;
 }
