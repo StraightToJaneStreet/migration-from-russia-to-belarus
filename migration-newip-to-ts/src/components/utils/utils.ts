@@ -19,7 +19,7 @@ export function makeUrl(base: string, endpoint: string, options: URLOptions) {
 }
 
 export function createElement(tag: string, classes: string[]): HTMLElement {
-  const element = document.createElement('tag');
+  const element = document.createElement(tag);
   element.classList.add(...classes);
   return element;
 }
