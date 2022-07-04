@@ -3,7 +3,7 @@ import { AppView } from '../view/AppView';
 
 class App {
   controller: any;
-  view: any;
+  view: AppView;
   constructor() {
     this.controller = new AppController();
     const appRoot = document.getElementById('#app');
