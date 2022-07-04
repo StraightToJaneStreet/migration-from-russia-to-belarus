@@ -5,10 +5,10 @@ import Article from '../core/Article';
 import Source from '../core/Source';
 
 export class AppView {
-    news: any;
-    sources: any;
+    news: NewsView;
+    sources: SourcesView;
 
-    constructor(root: HTMLElement) {
+    constructor(root: HTMLElement, changeSourceCallback: Function) {
         this.news = new NewsView(root);
         this.sources = new SourcesView(root);
     }
