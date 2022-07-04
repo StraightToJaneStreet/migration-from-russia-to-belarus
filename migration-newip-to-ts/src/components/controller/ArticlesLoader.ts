@@ -14,6 +14,6 @@ export default class ArticlesLoader extends Loader<Article[], ArticlesResponse> 
   }
 
   public loadBySource(sourceId: string): Promise<Article[]> {
-    return this.loadResponse({ source: sourceId });
+    return this.loadResponse({ sources: sourceId });
   }
 }
