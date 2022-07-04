@@ -4,5 +4,5 @@ export default abstract class BackendResponse<T> {
     this.response = resp;
   }
 
-  abstract extractEntities(): Promise<T[]>;
+  abstract extractEntities(): Promise<T>;
 }
