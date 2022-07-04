@@ -35,7 +35,7 @@ abstract class Loader<K, T extends BackendResponse<K>> {
     return makeUrl(this.baseLink, endpoint, urlOptions);
   }
 
-  loadResponse(endpoint: string, options: URLOptions = {}): Promise<T> {
+  loadResponse(endpoint: string, options: URLOptions = {}): Promise<K> {
     const targetUrl = this.makeRelativeUrl(endpoint, options);
     return fetch(targetUrl, { method: 'GET' })
       .catch((err) => { throw Error(err); })
@@ -43,7 +43,7 @@ abstract class Loader<K, T extends BackendResponse<K>> {
       .then(this.unwrapResponse)
   }
 
-  protected abstract unwrapResponse(response: Response): Promise<T>;
+  protected abstract unwrapResponse(response: Response): Promise<K>;
 }
 
 export default Loader;
