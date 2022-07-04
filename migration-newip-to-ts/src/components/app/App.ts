@@ -40,8 +40,8 @@ class App {
   }
 
   start() {
-    sourcesElement.addEventListener('click', (e: Event) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
-    this.controller.getSources((data) => this.view.drawSources(data));
+    const sourcesPromise = this.sourcesLoader.loadResponse();
+    sourcesPromise.then(sources => this.view.drawSources(sources));
   }
 }
 
