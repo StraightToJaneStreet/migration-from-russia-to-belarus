@@ -14,7 +14,7 @@ export function makeUrl(base: string, endpoint: string, options: URLOptions) {
   const optionsKeys = Object.keys(options);
   const optionsString = optionsKeys
     .map(key => createOptionPair(key, options[key]))
-    .join('');
+    .join('&');
   return `${url}?${optionsString}`;
 }
 
