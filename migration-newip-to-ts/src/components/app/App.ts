@@ -1,4 +1,3 @@
-import AppController from '../controller/Controller';
 import { AppView } from '../view/AppView';
 import SourcesLoader from '../controller/SourcesLoader';
 import ArticlesLoader from '../controller/ArticlesLoader';
@@ -15,8 +14,6 @@ class App {
     if (appRoot === null) {
       throw Error('Cant find root element');
     }
-
-    this.controller = new AppController();
 
     const apiConfig: ApiConfiguration = {
       baseUrl: 'https://newsapi.org/v2/',
