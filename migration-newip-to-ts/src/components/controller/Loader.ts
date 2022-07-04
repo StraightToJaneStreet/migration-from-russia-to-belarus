@@ -1,18 +1,19 @@
 import { makeUrl, errorHandler, URLOptions } from '../utils/utils';
 import BackendResponse from '../app/BackendResponse';
+import ApiConfiguration from '../app/ApiConfiguration';
 
 abstract class Loader<K, T extends BackendResponse<K>> {
-  baseLink: any;
+  baseUrl: any;
   apiKey: string;
 
-  constructor(baseLink: string, apiKey: string) {
-    this.apiKey = apiKey;
-    this.baseLink = baseLink;
+  constructor(apiConfig: ApiConfiguration) {
+    this.apiKey = apiConfig.apiKey;
+    this.baseUrl = apiConfig.baseUrl;
   }
 
   makeRelativeUrl(endpoint: string, options: URLOptions) {
     const urlOptions: URLOptions = { apiKey: this.apiKey, ...options };
-    return makeUrl(this.baseLink, endpoint, urlOptions);
+    return makeUrl(this.baseUrl, endpoint, urlOptions);
   }
 
   loadResponse(endpoint: string, options: URLOptions = {}): Promise<K> {
