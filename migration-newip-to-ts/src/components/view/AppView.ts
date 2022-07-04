@@ -9,8 +9,8 @@ export class AppView {
     sources: SourcesView;
 
     constructor(root: HTMLElement, changeSourceCallback: Function) {
-        this.news = new NewsView(root);
         this.sources = new SourcesView(root, changeSourceCallback);
+        this.news = new NewsView(root);
     }
 
     drawNews(articles: Article[]) {
