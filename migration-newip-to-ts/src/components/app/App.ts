@@ -30,7 +30,7 @@ class App {
     this.sourcesLoader = new SourcesLoader(apiConfig);
     this.articlesLoader = new ArticlesLoader(apiConfig);
 
-    this.view = new AppView(appRoot);
+    this.view = new AppView(appRoot, this.updateSource);
   }
 
   updateSource(sourceId: string) {
