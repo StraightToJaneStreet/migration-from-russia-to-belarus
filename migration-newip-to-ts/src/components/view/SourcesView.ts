@@ -4,10 +4,12 @@ import SourceView from './SourceView';
 
 class Sources {
   container: HTMLElement;
+  changeSourceCallback: Function;
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLElement, changeSourceCallback: Function) {
     this.container = document.createElement('div');
     this.container.classList.add('sources', 'buttons');
+    this.changeSourceCallback = changeSourceCallback;
     root.append(this.container);
   }
 
@@ -15,7 +17,7 @@ class Sources {
     const fragment = document.createDocumentFragment();
 
     sources.forEach((source) => {
-      const sourceElement = SourceView(source);
+      const sourceElement = SourceView(source, this.changeSourceCallback);
       fragment.append(sourceElement);
     });
 
