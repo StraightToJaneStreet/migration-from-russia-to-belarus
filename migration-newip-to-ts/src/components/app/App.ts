@@ -4,7 +4,6 @@ import ArticlesLoader from '../controller/ArticlesLoader';
 import ApiConfiguration from './ApiConfiguration';
 
 class App {
-  controller: any;
   view: AppView;
   sourcesLoader: SourcesLoader;
   articlesLoader: ArticlesLoader;
