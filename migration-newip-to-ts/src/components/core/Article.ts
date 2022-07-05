@@ -10,4 +10,4 @@ export default interface NewsItem {
   urlToImage: string,
   publishedAt: string,
   content: string
-};
+}
