@@ -2,7 +2,7 @@ import { makeUrl, errorHandler, URLOptions } from '../utils/utils';
 import BackendResponse from '../app/BackendResponse';
 import ApiConfiguration from '../app/ApiConfiguration';
 
-abstract class Loader<K, T extends BackendResponse<K>> {
+abstract class Loader<K> {
   apiConfig: ApiConfiguration
 
   endpoint: string;

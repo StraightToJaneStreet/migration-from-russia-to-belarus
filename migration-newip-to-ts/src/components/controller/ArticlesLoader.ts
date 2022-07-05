@@ -3,7 +3,7 @@ import Loader from './Loader';
 import Article from '../core/Article';
 import ArticlesResponse from '../app/ArticlesResponse';
 
-export default class ArticlesLoader extends Loader<Article[], ArticlesResponse> {
+export default class ArticlesLoader extends Loader<Article[]> {
   protected getEndpoint(): string {
       return this.apiConfig.endpoints.articles;
   }
