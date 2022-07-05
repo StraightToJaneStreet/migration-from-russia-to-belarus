@@ -1,5 +1,5 @@
 import { makeUrl, errorHandler, URLOptions } from '../utils/utils';
-import BackendResponse from '../app/BackendResponse';
+
 import ApiConfiguration from '../app/ApiConfiguration';
 
 abstract class Loader<K> {
