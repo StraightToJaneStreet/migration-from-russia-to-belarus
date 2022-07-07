@@ -1,7 +1,9 @@
 import Source from '../core/Source';
 import { createElement } from '../utils/utils';
 
-export default function SourceView(source: Source, changeSourceCallback: Function) {
+ import ChangeSourceCallback from '../app/SourcesCallbackFunction';
+
+export default function SourceView(source: Source, changeSourceCallback: ChangeSourceCallback) {
   const item = createElement('div', ['source__item']);
   item.addEventListener('click', () => changeSourceCallback(source.id));
 

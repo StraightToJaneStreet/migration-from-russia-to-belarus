@@ -2,11 +2,13 @@ import './css/sources.css';
 import Source from '../core/Source';
 import SourceView from './SourceView';
 
+import ChangeSourceCallback from '../app/SourcesCallbackFunction';
+
 class Sources {
   container: HTMLElement;
-  changeSourceCallback: Function;
+  changeSourceCallback: ChangeSourceCallback;
 
-  constructor(root: HTMLElement, changeSourceCallback: Function) {
+  constructor(root: HTMLElement, changeSourceCallback: ChangeSourceCallback) {
     this.container = document.createElement('div');
     this.container.classList.add('sources', 'buttons');
     this.changeSourceCallback = changeSourceCallback;

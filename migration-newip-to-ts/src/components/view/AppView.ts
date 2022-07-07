@@ -4,11 +4,13 @@ import SourcesView from './SourcesView';
 import Article from '../core/Article';
 import Source from '../core/Source';
 
+import ChangeSourceCallback from '../app/SourcesCallbackFunction';
+
 export class AppView {
     news: NewsView;
     sources: SourcesView;
 
-    constructor(root: HTMLElement, changeSourceCallback: Function) {
+    constructor(root: HTMLElement, changeSourceCallback: ChangeSourceCallback) {
         this.sources = new SourcesView(root, changeSourceCallback);
         this.news = new NewsView(root);
     }
